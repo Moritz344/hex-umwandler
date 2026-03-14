@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Hexadezimal Konverter</h1>
+  <div class="container-outline">
+    <div class="convert-options-container">
+      <select [(ngModel)]="fromOption">
+        <option value="hex">Hexadezimal</option>
+        <option value="dezimal">Dezimal</option>
+      </select>
+      <span style="font-size: 25px">zu</span>
+      <select [(ngModel)]="toOption">
+        <option value="hex">Hexadezimal</option>
+        <option value="dezimal">Dezimal</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      @if (this.fromOption == "hex" && this.toOption == "dezimal") {
+        <input [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input [(ngModel)]="decimalValue" placeholder="Dezimal">
+      }@else {
+        <input [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input [(ngModel)]="hexValue" placeholder="Hexadezimal">
+      }
+    </div>
+
+    <div class="option-container">
+      <button class="convert-button" (click)="calculate()">Konvertieren</button>
+      <button class="reset-button" (click)="reset()">Zurücksetzen</button>
+      <button (click)="trade()">Tauschen</button>
+    </div>
+  </div>
+</div>

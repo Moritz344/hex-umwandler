@@ -1,0 +1,51 @@
+.container{
+  display: grid;
+  justify-content: center;
+  margin-top: 250px;
+}
+
+.container-outline{
+  border: 1px solid var(--text-muted);
+  padding: 10px;
+  transform: scale(1.2);
+}
+
+.convert-options-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 10px;
+  margin-top: 10px;
+
+}
+
+.input-container input{
+  height: 30px;
+  width: 332px;
+}
+
+.convert-button:hover{
+  background-color: var(--gruvbox-neutral-green);
+}
+
+.reset-button:hover{
+  background-color: var(--gruvbox-bright-red);
+}
+
+.option-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.convert-options-container select{
+  width: 145px;
+}
+

@@ -1,0 +1,118 @@
+:root {
+    --bg-color: #282828;
+    --surface-color: #3c3836;
+    --accent-color: #d79921;
+    --accent-hover: #ebdbb2;
+    --text-color: #ebdbb2;
+    --text-muted: #928374;
+    --border-color: #504945;
+    --border-color-rgb: 80, 73, 75;
+    --error-color: #cc241d;
+    --radius: 10px;
+    --transition: 0.25s ease;
+    --input-color: #504945;
+    --primary: #d79921;
+    --primary-hover: #ebdbb2;
+    --secondary: #3c3836;
+    --secondary-hover: #504945;
+    --success: #b8bb26;
+    --success-hover: #ebdbb2;
+    --danger: #cc241d;
+    --danger-hover: #fb4934;
+    --ghost: rgba(235, 219, 178, 0.1);
+    --ghost-hover: rgba(235, 219, 178, 0.2);
+    --default-font: "Arial";
+    --default-fontSize: 20px;
+
+    --gruvbox-dark0: #282828;
+    --gruvbox-dark1: #3c3836;
+    --gruvbox-dark2: #504945;
+    --gruvbox-dark3: #665c54;
+    --gruvbox-dark4: #7c6f64;
+    --gruvbox-light0: #fbf1c7;
+    --gruvbox-light1: #ebdbb2;
+    --gruvbox-light2: #d5c4a1;
+    --gruvbox-light3: #bdae93;
+    --gruvbox-light4: #a89984;
+    --gruvbox-bright-red: #fb4934;
+    --gruvbox-bright-green: #b8bb26;
+    --gruvbox-bright-yellow: #fabd2f;
+    --gruvbox-bright-blue: #83a598;
+    --gruvbox-bright-purple: #d3869b;
+    --gruvbox-bright-aqua: #8ec07c;
+    --gruvbox-bright-orange: #fe8019;
+    --gruvbox-neutral-red: #cc241d;
+    --gruvbox-neutral-green: #98971a;
+    --gruvbox-neutral-yellow: #d79921;
+    --gruvbox-neutral-blue: #458588;
+    --gruvbox-neutral-purple: #b16286;
+    --gruvbox-neutral-aqua: #689d6a;
+    --gruvbox-neutral-orange: #d65d0e;
+    --gruvbox-faded-red: #9d0006;
+    --gruvbox-faded-green: #79740e;
+    --gruvbox-faded-yellow: #b57614;
+    --gruvbox-faded-blue: #076678;
+    --gruvbox-faded-purple: #8f3f71;
+    --gruvbox-faded-aqua: #427b58;
+    --gruvbox-faded-orange: #af3a03;
+
+    --material-background: #504945;
+    --material-background_2: #665c54;
+    --material-error: #cc241d;
+    --material-secondary: #d79921;
+    --material-primary: #d79921;
+
+    --message-size: 17px;
+}
+
+input{
+  background-color: var(--gruvbox-dark1);
+  border: none;
+  color: white;
+  padding: 3px;
+  outline: none;
+  font-size: 18px;
+}
+
+button{
+  background-color: var(--gruvbox-dark3);
+  border: none;
+  padding: 5px;
+  color: white;
+  font-size: 18px;
+}
+
+button:hover{
+  background-color: var(--text-muted)
+}
+
+select{
+  background-color: var(--gruvbox-dark2);
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+select:hover{
+  background-color: var(--text-muted)
+
+}
+
+
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: var(--gruvbox-dark0);
+    color: var(--text-color);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
