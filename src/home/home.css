@@ -4,6 +4,7 @@
   margin-top: 250px;
 }
 
+
 .container-outline{
   border: 1px solid var(--text-muted);
   padding: 10px;
@@ -19,7 +20,7 @@
 .input-container{
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 98%;
   gap: 10px;
   margin-top: 10px;
 
@@ -27,7 +28,7 @@
 
 .input-container input{
   height: 30px;
-  width: 332px;
+  width: 100%;
 }
 
 .convert-button:hover{
@@ -45,7 +46,11 @@
   margin-top: 10px;
 }
 
+.option-container button{
+  width: 100%;
+}
+
 .convert-options-container select{
-  width: 145px;
+  width: 100%;
 }
 
