@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
-  public fromOption: string = "dezimal"
-  public toOption: string = "hex";
+  public fromOption: string = "hex"
+  public toOption: string = "dezimal";
 
   public hexValue: string = "";
   public hexValues: { symbol: string, value: number }[] = [
@@ -32,8 +32,8 @@ export class Home implements OnInit {
   }
 
   reset() {
-    this.fromOption = "dezimal";
-    this.toOption = "hex";
+    this.fromOption = "hex";
+    this.toOption = "dezimal";
     this.decimalValue = "";
     this.hexValue = "";
   }
