@@ -1,5 +1,5 @@
 # Hex Umwandler
-Online Hex Umwandler für mein Fachbericht über das Hexadezimalzahlensystem.
+Online Hex Umwandler für mein Fachbericht über das Hexadezimalsystem.
 
 
 # Lokal starten
