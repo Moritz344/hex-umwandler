@@ -71,12 +71,21 @@ export class Home implements OnInit {
       finalResult += Number(hex[i]) * p; // hex ziffer mit ergebniss der potenz berechnen
     }
     this.decimalValue = finalResult.toString();
+    if (this.decimalValue == "NaN") {
+      alert("Ungültiger wert für hex: " + this.hexValue);
+      return;
+    }
 
 
   }
 
   calculateDecimalToHex() {
     let decimal = this.decimalValue;
+    if (!Number(this.decimalValue)) {
+      alert("Ungültiger wert für Dezimalzahl: " + decimal);
+      this.decimalValue = "";
+      return;
+    }
 
     // Alle potenz ergebnisse
     let potenzResults = [];
@@ -123,7 +132,7 @@ export class Home implements OnInit {
     } else if (this.fromOption == "dezimal" && this.toOption == "hex") {
       this.calculateDecimalToHex();
     } else {
-      alert("Ich kann das nicht umwandeln :/");
+      alert("Das ergibt keinen Sinn!");
     }
 
 
