@@ -3,12 +3,14 @@
 
 Online Hex Umwandler für mein Fachbericht über das Hexadezimalsystem.
 
+<img width="610" height="329" alt="screenshot-2026-03-16_21-15-15" src="https://github.com/user-attachments/assets/6c41e6dd-b1e4-4513-846b-cf6d182482df" />
 
 
 # Lokal starten
 ```bash
 git clone https://github.com/Moritz344/hex-umwandler.git
 cd hex-umwandler/
+npm install
 ng serve
 ```
 
