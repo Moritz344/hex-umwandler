@@ -73,6 +73,8 @@ export class Home implements OnInit {
     this.decimalValue = finalResult.toString();
     if (this.decimalValue == "NaN") {
       alert("Ungültiger wert für hex: " + this.hexValue);
+      this.decimalValue = "";
+      this.hexValue = "";
       return;
     }
 
@@ -84,6 +86,7 @@ export class Home implements OnInit {
     if (!Number(this.decimalValue)) {
       alert("Ungültiger wert für Dezimalzahl: " + decimal);
       this.decimalValue = "";
+      this.hexValue = "";
       return;
     }
 
