@@ -135,7 +135,7 @@ export class Home implements OnInit {
     } else if (this.fromOption == "dezimal" && this.toOption == "hex") {
       this.calculateDecimalToHex();
     } else {
-      alert("Das ergibt keinen Sinn!");
+      alert("Du kannst " + this.fromOption + " nicht in " + this.toOption + " umwandeln.");
     }
 
 
