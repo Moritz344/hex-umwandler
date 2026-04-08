@@ -1,12 +1,14 @@
 <div class="container">
-  <h1>Hexadezimal Konverter</h1>
+  <h1 >Hexadezimal Konverter</h1>
   <div class="container-outline">
     <div class="convert-options-container">
       <select [(ngModel)]="fromOption">
         <option value="hex">Hexadezimal</option>
         <option value="dezimal">Dezimal</option>
       </select>
-      <span style="font-size: 25px">zu</span>
+      <button (click)="trade()" style="font-size: 25px;display:flex;justify-content: center;align-items: center;border-radius: 3px;">
+          <img src="arrow.svg">
+      </button>
       <select [(ngModel)]="toOption">
         <option value="hex">Hexadezimal</option>
         <option value="dezimal">Dezimal</option>
@@ -15,18 +17,18 @@
 
     <div class="input-container">
       @if (this.fromOption == "hex" && this.toOption == "dezimal") {
-        <input [(ngModel)]="hexValue" placeholder="Hexadezimal">
-        <input [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
       }@else {
-        <input [(ngModel)]="decimalValue" placeholder="Dezimal">
-        <input [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
       }
     </div>
 
     <div class="option-container">
       <button class="convert-button" (click)="calculate()">Konvertieren</button>
       <button class="reset-button" (click)="reset()">Zurücksetzen</button>
-      <button (click)="trade()">Tauschen</button>
+      <button style="border-radius: 3px" (click)="trade()">Tauschen</button>
     </div>
   </div>
 </div>

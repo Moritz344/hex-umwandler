@@ -6,9 +6,10 @@
 
 
 .container-outline{
-  border: 1px solid var(--text-muted);
+  border: 2px solid var(--text-muted);
   padding: 10px;
   transform: scale(1.2);
+  border-radius: 3px;
 }
 
 .convert-options-container{
@@ -29,6 +30,14 @@
 .input-container input{
   height: 30px;
   width: 100%;
+}
+
+.convert-button{
+  border-radius: 3px;
+}
+
+.reset-button{
+  border-radius: 3px;
 }
 
 .convert-button:hover{

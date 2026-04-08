@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+// Hex Umwandler für mein Fachbericht über das Hexadezimalsystem
+
 @Component({
   selector: 'app-home',
   imports: [CommonModule, FormsModule],
@@ -24,7 +26,6 @@ export class Home implements OnInit {
 
   public decimalValue: string = "";
 
-  public hexIsFirst: boolean = true;
 
   constructor() { }
 
@@ -74,11 +75,14 @@ export class Home implements OnInit {
     if (this.decimalValue == "NaN") {
       alert("Ungültiger wert für hex: " + this.hexValue);
       this.decimalValue = "";
-      this.hexValue = "";
+      this.hexValue = ""; 					
       return;
     }
 
 
+  }
+
+  onSwitchDropdowns() {
   }
 
   calculateDecimalToHex() {
