@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef,ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -10,9 +10,12 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
+export class Home implements OnInit,AfterViewInit {
   public fromOption: string = "hex"
   public toOption: string = "dezimal";
+
+  @ViewChild("hexInput") hexInput!: ElementRef;
+  @ViewChild("decimalInput") decimalInput!: ElementRef;
 
   public hexValue: string = "";
   public hexValues: { symbol: string, value: number }[] = [
@@ -29,7 +32,10 @@ export class Home implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterViewInit(): void {
+    this.hexInput.nativeElement.focus();
   }
 
   reset() {
@@ -43,9 +49,15 @@ export class Home implements OnInit {
     if (this.fromOption == "hex" && this.toOption == "dezimal") {
       this.fromOption = "dezimal";
       this.toOption = "hex";
+      setTimeout( () => {
+        this.decimalInput.nativeElement.focus();
+      },100);
     } else {
       this.fromOption = "hex";
       this.toOption = "dezimal";
+      setTimeout( () => {
+        this.hexInput.nativeElement.focus();
+      },100);
     }
   }
 
@@ -80,9 +92,6 @@ export class Home implements OnInit {
     }
 
 
-  }
-
-  onSwitchDropdowns() {
   }
 
   calculateDecimalToHex() {
