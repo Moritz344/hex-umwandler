@@ -17,10 +17,10 @@
 
     <div class="input-container">
       @if (this.fromOption == "hex" && this.toOption == "dezimal") {
-        <input #hexInput style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input #hexInput style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="hexValue" placeholder="Hexadezimal">
         <input  readonly style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
       }@else {
-        <input #decimalInput style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input #decimalInput style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="decimalValue" placeholder="Dezimal">
         <input readonly style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
       }
     </div>

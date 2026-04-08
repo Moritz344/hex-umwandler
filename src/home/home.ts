@@ -62,10 +62,18 @@ export class Home implements OnInit,AfterViewInit {
   }
 
   calculateHexToDecimal() {
-    let hex = this.hexValue.split("");
+    let hex: any = "";
+
+    // Kennzeichnungen (0x,#) können vor dem hex eingegeben werden
+    if (this.hexValue.startsWith("0x")) {
+      let splittedHex = this.hexValue.split("0x");
+      hex = splittedHex[1].split("");
+    } else {
+      hex = this.hexValue.split("");
+    }
 
     // Zuerst schauen ob wir Buchstaben im hex haben wenn ja umwandeln
-    const result = hex.map(c => {
+    const result = hex.map((c: any) => {
       const found = this.hexValues.find(h => h.symbol === c.toUpperCase());
       if (found) {
         return found.value.toString();
@@ -74,14 +82,13 @@ export class Home implements OnInit,AfterViewInit {
       }
     });
 
-
     hex = result;
 
     let finalResult = 0;
     hex.reverse(); // wir rechnen von rechts nach links
     for (let i = 0; i < hex.length; i++) {
       let p = 16 ** i; // Ergebnis der Potenz
-      finalResult += Number(hex[i]) * p; // hex ziffer mit ergebniss der potenz berechnen
+      finalResult += Number(hex[i]) * p; // hex ziffer mit Ergebnis der Potenz berechnen
     }
     this.decimalValue = finalResult.toString();
     if (this.decimalValue == "NaN") {
@@ -96,7 +103,7 @@ export class Home implements OnInit,AfterViewInit {
 
   calculateDecimalToHex() {
     let decimal = this.decimalValue;
-    if (!Number(this.decimalValue)) {
+    if (!Number(decimal)) {
       alert("Ungültiger wert für Dezimalzahl: " + decimal);
       this.decimalValue = "";
       this.hexValue = "";
@@ -137,7 +144,7 @@ export class Home implements OnInit,AfterViewInit {
     if (result[0] == 0) {
       result[0] = "";
     }
-    this.hexValue = result.join("");
+    this.hexValue = "0x" + result.join("");
 
 
   }
