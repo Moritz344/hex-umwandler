@@ -18,17 +18,16 @@
     <div class="input-container">
       @if (this.fromOption == "hex" && this.toOption == "dezimal") {
         <input #hexInput style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
-        <input  style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input  readonly style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
       }@else {
         <input #decimalInput style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
-        <input style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input readonly style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
       }
     </div>
 
     <div class="option-container">
       <button class="convert-button" (click)="calculate()">Konvertieren</button>
       <button class="reset-button" (click)="reset()">Zurücksetzen</button>
-      <button style="border-radius: 3px" (click)="trade()">Tauschen</button>
     </div>
   </div>
 </div>
