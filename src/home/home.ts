@@ -64,7 +64,7 @@ export class Home implements OnInit,AfterViewInit {
   calculateHexToDecimal() {
     let hex: any = "";
 
-    // Kennzeichnungen (0x,#) können vor dem hex eingegeben werden
+    // Kennzeichnungen 0x kann vor dem hex eingegeben werden
     if (this.hexValue.startsWith("0x")) {
       let splittedHex = this.hexValue.split("0x");
       hex = splittedHex[1].split("");
