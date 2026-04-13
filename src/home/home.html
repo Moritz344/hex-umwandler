@@ -6,8 +6,9 @@
         <option value="hex">Hexadezimal</option>
         <option value="dezimal">Dezimal</option>
       </select>
-      <button (click)="trade()" style="font-size: 25px;display:flex;justify-content: center;align-items: center;border-radius: 3px;">
+      <button title="Tauschen" (click)="trade()" style="font-size: 25px;display:flex;justify-content: center;align-items: center;border-radius: 3px;">
           <img src="arrow.svg">
+
       </button>
       <select [(ngModel)]="toOption">
         <option value="hex">Hexadezimal</option>
@@ -17,11 +18,11 @@
 
     <div class="input-container">
       @if (this.fromOption == "hex" && this.toOption == "dezimal") {
-        <input #hexInput style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="hexValue" placeholder="Hexadezimal">
-        <input  readonly style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input  spellcheck="false" style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input  spellcheck="false" readonly style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
       }@else {
-        <input #decimalInput style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="decimalValue" placeholder="Dezimal">
-        <input readonly style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input spellcheck="false" #decimalInput style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input spellcheck="false" readonly style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
       }
     </div>
 
