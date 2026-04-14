@@ -45,8 +45,6 @@ export class Home implements OnInit,AfterViewInit {
   }
 
   reset() {
-    this.fromOption = "hex";
-    this.toOption = "dezimal";
     this.decimalValue = "";
     this.hexValue = "";
   }
