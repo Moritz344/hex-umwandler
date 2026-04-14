@@ -1,8 +1,9 @@
-import { Component, OnInit,ElementRef,ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit,ElementRef,ViewChild, AfterViewInit,ChangeDetectorRef,inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 // Hex Umwandler für mein Fachbericht über das Hexadezimalsystem
+// TODO: Rechenweg
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.css',
 })
 export class Home implements OnInit,AfterViewInit {
+
+  private cdr = inject(ChangeDetectorRef);
+
+  @ViewChild("hexInput", { static: false }) hexInput: ElementRef<HTMLInputElement> | undefined;
+  @ViewChild("decimalInput", { static: false }) decimalInput: ElementRef<HTMLInputElement> | undefined;
+
   public fromOption: string = "hex"
   public toOption: string = "dezimal";
-
-  @ViewChild("hexInput") hexInput!: ElementRef;
-  @ViewChild("decimalInput") decimalInput!: ElementRef;
 
   public hexValue: string = "";
   public hexValues: { symbol: string, value: number }[] = [
@@ -35,7 +39,9 @@ export class Home implements OnInit,AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit(): void {
-    this.hexInput.nativeElement.focus();
+    if (this.hexInput) {
+      this.hexInput.nativeElement.focus();
+    }
   }
 
   reset() {
@@ -49,15 +55,17 @@ export class Home implements OnInit,AfterViewInit {
     if (this.fromOption == "hex" && this.toOption == "dezimal") {
       this.fromOption = "dezimal";
       this.toOption = "hex";
-      setTimeout( () => {
+      this.cdr.detectChanges();
+      if (this.decimalInput) {
         this.decimalInput.nativeElement.focus();
-      },100);
+      }
     } else {
       this.fromOption = "hex";
       this.toOption = "dezimal";
-      setTimeout( () => {
+      this.cdr.detectChanges();
+      if (this.hexInput) {
         this.hexInput.nativeElement.focus();
-      },100);
+      }
     }
   }
 
@@ -103,21 +111,19 @@ export class Home implements OnInit,AfterViewInit {
 
   calculateDecimalToHex() {
     let decimal = this.decimalValue;
-    if (!Number(decimal)) {
+    if (!decimal || !Number(decimal)) {
       alert("Ungültiger wert für Dezimalzahl: " + decimal);
       this.decimalValue = "";
       this.hexValue = "";
       return;
     }
 
-    // Alle potenz ergebnisse
+    // Alle Potenz Ergebnisse
     let potenzResults = [];
-    for (let i = 0; i < decimal.length; i++) {
+    for (let i = decimal.length; i >= 0; i--) {
       let p = 16 ** i;
       potenzResults.push(p);
     }
-
-    potenzResults.reverse();
 
 
     // Einzelne Ergebnisse ausrechnen und in array pushen
@@ -128,8 +134,11 @@ export class Home implements OnInit,AfterViewInit {
       let result_2 = result * potenzResults[x];
       let result_3 = remaining - result_2;
 
+
       remaining = result_3;
-      resultsArray.push(result);
+      if (result > 0) {
+        resultsArray.push(result);
+      }
     }
 
     // dezimal zahlen in ihre hex zahlen umwandeln
@@ -141,9 +150,7 @@ export class Home implements OnInit,AfterViewInit {
         return c;
       }
     });
-    if (result[0] == 0) {
-      result[0] = "";
-    }
+
     this.hexValue = "0x" + result.join("");
 
 

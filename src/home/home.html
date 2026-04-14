@@ -18,11 +18,11 @@
 
     <div class="input-container">
       @if (this.fromOption == "hex" && this.toOption == "dezimal") {
-        <input  spellcheck="false" style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="hexValue" placeholder="Hexadezimal">
-        <input  spellcheck="false" readonly style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input #hexInput spellcheck="false"  style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input spellcheck="false" readonly style="border-radius: 3px" [(ngModel)]="decimalValue" placeholder="Dezimal">
       }@else {
-        <input spellcheck="false" #decimalInput style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="decimalValue" placeholder="Dezimal">
-        <input spellcheck="false" readonly style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
+        <input #decimalInput spellcheck="false"  style="border-radius: 3px" (keydown.code.enter)="calculate()" [(ngModel)]="decimalValue" placeholder="Dezimal">
+        <input spellcheck="false"  readonly style="border-radius: 3px" [(ngModel)]="hexValue" placeholder="Hexadezimal">
       }
     </div>
 
