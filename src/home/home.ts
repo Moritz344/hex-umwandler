@@ -80,6 +80,7 @@ export class Home implements OnInit,AfterViewInit {
       hex = this.hexValue.split("");
     }
 
+
     // Zuerst schauen ob wir Buchstaben im hex haben wenn ja umwandeln
     const result = hex.map((c: any) => {
       const found = this.hexValues.find(h => h.symbol === c.toUpperCase());
@@ -111,7 +112,7 @@ export class Home implements OnInit,AfterViewInit {
 
   calculateDecimalToHex() {
     let decimal = this.decimalValue;
-    if (!decimal || !Number(decimal)) {
+    if (!decimal || !Number(decimal) || decimal.startsWith("0x")) {
       alert("Ungültiger wert für Dezimalzahl: " + decimal);
       this.decimalValue = "";
       this.hexValue = "";
@@ -136,9 +137,7 @@ export class Home implements OnInit,AfterViewInit {
 
 
       remaining = result_3;
-      if (result > 0) {
-        resultsArray.push(result);
-      }
+      resultsArray.push(result);
     }
 
     // dezimal zahlen in ihre hex zahlen umwandeln
@@ -150,6 +149,10 @@ export class Home implements OnInit,AfterViewInit {
         return c;
       }
     });
+
+    while (result[0] === 0) {
+      result.shift();
+    }
 
     this.hexValue = "0x" + result.join("");
 
