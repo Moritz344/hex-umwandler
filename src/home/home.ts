@@ -93,6 +93,7 @@ export class Home implements OnInit,AfterViewInit {
       title: "Rechenweg:",
       description: ""
     }
+
     this.logs.description +="\n";
     // Zuerst schauen ob wir Buchstaben im hex haben wenn ja umwandeln
     const result = hex.map((c: any) => {
@@ -130,13 +131,17 @@ export class Home implements OnInit,AfterViewInit {
 
     this.logs.description +="\n";
     this.logs.description += "Hex Ziffer mit Ergebnis der Potenz multiplizieren \n";
-    for (let x=0;x<finalResultForLogs.length;x++) {
-      this.logs.description += x + ": " + finalResultForLogs[x].a + " = " + finalResultForLogs[x].result + "\n";
-
-    }
-    this.logs.description +="\n";
+    let sumResults: any = [];
+    finalResultForLogs.forEach( (x: any,index: number) => {
+      this.logs.description += index + ": " + x.a + " = " + x.result + "\n";
+      sumResults.push(x.result);
+    });
 
     this.decimalValue = finalResult.toString();
+    this.logs.description +="\n" + sumResults.join(" + ") + " = " + this.decimalValue;
+
+    this.logs.description +="\n";
+
 
     this.logs.description +="\n";
     this.logs.description += "FINALES ERGEBNIS: " + this.decimalValue;
@@ -204,16 +209,17 @@ export class Home implements OnInit,AfterViewInit {
     this.logs.description += "\n";
 
 
-    // dezimal zahlen in ihre hex zahlen umwandeln
+    // Dezimal Zahlen in ihre hex Zahlen umwandeln
     let result = resultsArray.map(c => {
       const found = this.hexValues.find(h => h.value === c);
       if (found) {
-        this.logs.description += found.value + " in Buchstaben umwandeln: " + found.symbol;
+        this.logs.description += found.value +  " in Buchstaben umwandeln: " + found.symbol + "\n";
         return found.symbol.toString();
       } else {
         return c;
       }
     });
+
 
     while (result[0] === 0) {
       result.shift();
