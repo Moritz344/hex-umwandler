@@ -108,7 +108,7 @@ export class Home implements OnInit,AfterViewInit {
 
     hex = result;
     
-    this.logs.description += "Werte: " + result + "\n";
+    this.logs.description += (result.length > 0) ? "Werte: " + result + "\n" : "";
     this.logs.description +="\n";
 
 
@@ -124,13 +124,13 @@ export class Home implements OnInit,AfterViewInit {
       finalResultForLogs.push({result: Number(hex[i] * p).toString(),a: hex[i] + " * " + p});
     }
 
-    this.logs.description += "Potenz Ergebnisse: \n";
+    this.logs.description += (result.length > 0) ? "Potenz Ergebnisse: \n" : "";
     for (let i=0;i<potenzResultsForLogs.length;i++) {
       this.logs.description += i + ": " + potenzResultsForLogs[i].a + " = " + potenzResultsForLogs[i].result + "\n";
     }
 
     this.logs.description +="\n";
-    this.logs.description += "Hex Ziffer mit Ergebnis der Potenz multiplizieren \n";
+    this.logs.description += (result.length > 0) ? "Hex Ziffer mit Ergebnis der Potenz multiplizieren \n" : "";
     let sumResults: any = [];
     finalResultForLogs.forEach( (x: any,index: number) => {
       this.logs.description += index + ": " + x.a + " = " + x.result + "\n";
@@ -138,12 +138,14 @@ export class Home implements OnInit,AfterViewInit {
     });
 
     this.decimalValue = finalResult.toString();
-    this.logs.description +="\n" + sumResults.join(" + ") + " = " + this.decimalValue;
+    if (sumResults.length > 0) {
+      this.logs.description +="\n" + sumResults.join(" + ") + " = " + this.decimalValue;
+      this.logs.description +="\n";
+      this.logs.description +="\n";
+    }
 
-    this.logs.description +="\n";
 
 
-    this.logs.description +="\n";
     this.logs.description += "FINALES ERGEBNIS: " + this.decimalValue;
 
     if (this.decimalValue == "NaN") {
@@ -205,7 +207,7 @@ export class Home implements OnInit,AfterViewInit {
       resultsArray.push(result);
     }
 
-    this.logs.description += resultsArrayForLogs;
+    this.logs.description += resultsArrayForLogs.join("");
     this.logs.description += "\n";
 
 
