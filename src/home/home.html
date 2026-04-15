@@ -1,3 +1,12 @@
+
+@if (showCalculationWay) {
+  <app-calculation [data]="logs" (close)="onCloseCalculation()">
+  </app-calculation>
+
+
+}
+  
+
 <div class="container">
   <h1 >Hexadezimal Konverter</h1>
   <div class="container-outline">
@@ -32,3 +41,4 @@
     </div>
   </div>
 </div>
+
