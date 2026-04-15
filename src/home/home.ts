@@ -56,6 +56,7 @@ export class Home implements OnInit,AfterViewInit {
   reset() {
     this.decimalValue = "";
     this.hexValue = "";
+    this.onCloseCalculation();
   }
 
   trade() {
