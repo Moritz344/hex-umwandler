@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    margin-left: 100px;
+    margin-top: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 500px;
+    position: absolute;
+    background-color: var(--secondary);
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 600px;
+}
+
+::-webkit-scrollbar{
+background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--ghost);
+}
+
+
+
