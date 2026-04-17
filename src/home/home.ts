@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef,ViewChild, AfterViewInit,ChangeDetectorRef,inject,signal } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Calculation } from '../calculation/calculation';
@@ -6,18 +6,18 @@ import { Calculation } from '../calculation/calculation';
 // Hex Umwandler für mein Fachbericht über das Hexadezimalsystem
 // TODO: Rechenweg
 
-interface Log{
+interface Log {
   title: string,
   description: string,
 }
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule,Calculation],
+  imports: [CommonModule, FormsModule, Calculation],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit,AfterViewInit {
+export class Home implements OnInit, AfterViewInit {
 
   private cdr = inject(ChangeDetectorRef);
 
@@ -41,11 +41,11 @@ export class Home implements OnInit,AfterViewInit {
   public decimalValue: string = "";
 
   public showCalculationWay: boolean = false;
-  public logs: Log = { title: "",description: ""};
+  public logs: Log = { title: "", description: "" };
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
     if (this.hexInput) {
@@ -56,7 +56,10 @@ export class Home implements OnInit,AfterViewInit {
   reset() {
     this.decimalValue = "";
     this.hexValue = "";
-    this.onCloseCalculation();
+  }
+
+  onCloseCalculation() {
+    this.showCalculationWay = false;
   }
 
   trade() {
@@ -94,12 +97,12 @@ export class Home implements OnInit,AfterViewInit {
       description: ""
     }
 
-    this.logs.description +="\n";
+    this.logs.description += "\n";
     // Zuerst schauen ob wir Buchstaben im hex haben wenn ja umwandeln
     const result = hex.map((c: any) => {
       const found = this.hexValues.find(h => h.symbol === c.toUpperCase());
       if (found) {
-        this.logs.description += "Buchstabe: " + found.symbol  + " im Hex gefunden wird nun durch seinen Wert: " + found.value.toString() + " ersetzt \n"
+        this.logs.description += "Buchstabe: " + found.symbol + " im Hex gefunden wird nun durch seinen Wert: " + found.value.toString() + " ersetzt \n"
         return found.value.toString();
       } else {
         return c;
@@ -107,41 +110,41 @@ export class Home implements OnInit,AfterViewInit {
     });
 
     hex = result;
-    
+
     this.logs.description += (result.length > 0) ? "Werte: " + result + "\n" : "";
-    this.logs.description +="\n";
+    this.logs.description += "\n";
 
 
-    let potenzResultsForLogs: { result: string,a: string }[] = [];
-    let finalResultForLogs: { result: string,a: string}[] = [];
+    let potenzResultsForLogs: { result: string, a: string }[] = [];
+    let finalResultForLogs: { result: string, a: string }[] = [];
 
     let finalResult = 0;
     hex.reverse(); // wir rechnen von rechts nach links
     for (let i = 0; i < hex.length; i++) {
       let p = 16 ** i; // Ergebnis der Potenz
-      potenzResultsForLogs.push({result: p.toString(),a: "16 ** " + i});
+      potenzResultsForLogs.push({ result: p.toString(), a: "16 ** " + i });
       finalResult += Number(hex[i]) * p; // hex ziffer mit Ergebnis der Potenz berechnen
-      finalResultForLogs.push({result: Number(hex[i] * p).toString(),a: hex[i] + " * " + p});
+      finalResultForLogs.push({ result: Number(hex[i] * p).toString(), a: hex[i] + " * " + p });
     }
 
     this.logs.description += (result.length > 0) ? "Potenz Ergebnisse: \n" : "";
-    for (let i=0;i<potenzResultsForLogs.length;i++) {
+    for (let i = 0; i < potenzResultsForLogs.length; i++) {
       this.logs.description += i + ": " + potenzResultsForLogs[i].a + " = " + potenzResultsForLogs[i].result + "\n";
     }
 
-    this.logs.description +="\n";
+    this.logs.description += "\n";
     this.logs.description += (result.length > 0) ? "Hex Ziffer mit Ergebnis der Potenz multiplizieren \n" : "";
     let sumResults: any = [];
-    finalResultForLogs.forEach( (x: any,index: number) => {
+    finalResultForLogs.forEach((x: any, index: number) => {
       this.logs.description += index + ": " + x.a + " = " + x.result + "\n";
       sumResults.push(x.result);
     });
 
     this.decimalValue = finalResult.toString();
     if (sumResults.length > 0) {
-      this.logs.description +="\n" + sumResults.join(" + ") + " = " + this.decimalValue;
-      this.logs.description +="\n";
-      this.logs.description +="\n";
+      this.logs.description += "\n" + sumResults.join(" + ") + " = " + this.decimalValue;
+      this.logs.description += "\n";
+      this.logs.description += "\n";
     }
 
 
@@ -151,7 +154,7 @@ export class Home implements OnInit,AfterViewInit {
     if (this.decimalValue == "NaN") {
       alert("Ungültiger wert für hex: " + this.hexValue);
       this.decimalValue = "";
-      this.hexValue = ""; 					
+      this.hexValue = "";
       return;
     }
 
@@ -159,8 +162,8 @@ export class Home implements OnInit,AfterViewInit {
 
   }
 
-  onCloseCalculation() {
-    this.showCalculationWay = false;
+  onShowCalculationWay() {
+    this.showCalculationWay = !this.showCalculationWay;
   }
 
   calculateDecimalToHex() {
@@ -179,16 +182,16 @@ export class Home implements OnInit,AfterViewInit {
 
     // Alle Potenz Ergebnisse
     let potenzResults = [];
-    let potenzResultsForLogs: {result: string,a: string}[] = [];
+    let potenzResultsForLogs: { result: string, a: string }[] = [];
     for (let i = decimal.length; i >= 0; i--) {
       let p = 16 ** i;
-      potenzResultsForLogs.push({result:p.toString(),a: "16 ** " + i});
+      potenzResultsForLogs.push({ result: p.toString(), a: "16 ** " + i });
       potenzResults.push(p);
     }
 
     this.logs.description += "Potenz Ergebnisse:\n";
-    potenzResultsForLogs.forEach( (p: any) => {
-        this.logs.description += p.a.toString() + " = " + p.result + "\n"; 
+    potenzResultsForLogs.forEach((p: any) => {
+      this.logs.description += p.a.toString() + " = " + p.result + "\n";
     });
 
     this.logs.description += "\n";
@@ -202,7 +205,7 @@ export class Home implements OnInit,AfterViewInit {
       let result_2 = result * potenzResults[x];
       let result_3 = remaining - result_2;
 
-      resultsArrayForLogs.push("Iteration: " + x  + "\n\n" + remaining + " / " + potenzResults[x] + " = " + result + "\n" + result + " * " + potenzResults[x] + " = "  + result_2 + "\n" + remaining + " - " + result_2 + " = " + result_3 + "\n\n");
+      resultsArrayForLogs.push("Iteration: " + x + "\n\n" + remaining + " / " + potenzResults[x] + " = " + result + "\n" + result + " * " + potenzResults[x] + " = " + result_2 + "\n" + remaining + " - " + result_2 + " = " + result_3 + "\n\n");
       remaining = result_3;
       resultsArray.push(result);
     }
@@ -215,7 +218,7 @@ export class Home implements OnInit,AfterViewInit {
     let result = resultsArray.map(c => {
       const found = this.hexValues.find(h => h.value === c);
       if (found) {
-        this.logs.description += found.value +  " in Buchstaben umwandeln: " + found.symbol + "\n";
+        this.logs.description += found.value + " in Buchstaben umwandeln: " + found.symbol + "\n";
         return found.symbol.toString();
       } else {
         return c;
@@ -235,7 +238,6 @@ export class Home implements OnInit,AfterViewInit {
   }
 
   calculate() {
-    this.showCalculationWay = true;
     if (this.fromOption == "hex" && this.toOption == "dezimal") {
       this.calculateHexToDecimal();
     } else if (this.fromOption == "dezimal" && this.toOption == "hex") {

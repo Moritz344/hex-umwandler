@@ -5,6 +5,7 @@
 }
 
 
+
 .container-outline{
   border: 2px solid var(--text-muted);
   padding: 10px;
@@ -30,6 +31,13 @@
 .input-container input{
   height: 30px;
   width: 100%;
+}
+
+.calc-button{
+  border-radius: 3px;
+}
+.calc-button:hover{
+  background-color: var(--gruvbox-neutral-aqua);
 }
 
 .convert-button{
