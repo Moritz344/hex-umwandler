@@ -41,7 +41,7 @@ export class Home implements OnInit, AfterViewInit {
   public decimalValue: string = "";
 
   public showCalculationWay: boolean = false;
-  public logs: Log = { title: "", description: "" };
+  public logs: any = {};
 
   constructor() { }
 
@@ -56,6 +56,7 @@ export class Home implements OnInit, AfterViewInit {
   reset() {
     this.decimalValue = "";
     this.hexValue = "";
+    this.logs = {};
   }
 
   onCloseCalculation() {

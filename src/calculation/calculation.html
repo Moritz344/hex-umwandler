@@ -1,6 +1,10 @@
 <div class="screen"></div>
 <div #container class="container" >
         <pre style="font-size: 16px">
+            @if (data.title == undefined ) {
+              <h1 style="display: flex;justify-content: center;margin-bottom: 0px">Keine Daten Für den Rechenweg!</h1>
+              <p style="display: flex;justify-content: center;margin-top: 0px">Bitte Wandeln Sie über den "Konvertieren" Button einen Wert um!</p>
+            }
             <button (click)="onToggleCalculation()" style="display:flex;justify-content:center;position: absolute; top: 10px; right: 10px"><img src="close.svg"></button>
             <h1 style="margin-bottom: -30px;margin-top: 0px;">{{ data.title }}</h1>
             {{ data.description }}
