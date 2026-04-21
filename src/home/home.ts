@@ -159,7 +159,6 @@ export class Home implements OnInit, AfterViewInit {
       return;
     }
 
-    console.log(this.logs);
 
   }
 

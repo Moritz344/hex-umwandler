@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-calculation',
@@ -13,16 +13,19 @@ export class Calculation implements OnInit, AfterViewInit {
 
   public showFullCalc: boolean = false;
 
-  onToggleCalculation() {
+  @HostListener("window:keydown", ['$event'])
+  onEscape(event: KeyboardEvent) {
+    if (event.key == "Escape") {
+      this.close.emit();
+    }
+
+  }
+
+  onClose() {
     this.close.emit();
   }
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.data);
-
-  }
-  ngAfterViewInit() {
-
-  }
+  ngOnInit(): void {}
+  ngAfterViewInit() {}
 }

@@ -48,6 +48,18 @@
   border-radius: 3px;
 }
 
+button{
+  user-select: none;
+}
+
+select{
+  user-select: none;
+}
+
+h1{
+  user-select: none;
+}
+
 .convert-button:hover{
   background-color: var(--gruvbox-neutral-green);
 }
